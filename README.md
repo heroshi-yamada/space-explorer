@@ -43,3 +43,4 @@ Thus, Space Explorer was born - so I could explore the universe while avoiding m
 ---
 
 ## 💻 Quick start
+click to play [((. ❛ ᴗ ❛.))](https://heroshi-yamada.github.io/space-explorer)
