@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="space.js" defer></script>
+
+</head>
+<body class="bg-gray-900 text-white min-h-screen overflow-x-hidden">
+    <!-- Star Background -->
+    <div id="stars-container" class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden"></div>
+    
+    <!-- Header -->
+    <header class="relative py-20 text-center">
+        <h1 class="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+            Space Explorer
+        </h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto px-4">
+            Journey through the cosmos and discover the wonders of our universe
+        </p>
+        <div class="mt-10">
+            <button onclick="scrollToSection('planets')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mr-4 transition-all">
+                Explore Planets
+            </button>
+            <button onclick="scrollToSection('stars')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-all">
+                Discover Stars
+            </button>
+        </div>
+    </header>
+
+    <!-- Fun Facts Section -->
+    <section class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">Amazing Space Facts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-blue-400 text-4xl mb-4">
+                    <i class="fas fa-meteor"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Space is Silent</h3>
+                <p class="text-gray-300">In space, no one can hear you scream because there's no medium for sound to travel through. Sound waves need a medium like air or water to vibrate through.</p>
+            </div>
+            
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-purple-400 text-4xl mb-4">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">The Sun's Size</h3>
+                <p class="text-gray-300">The Sun accounts for 99.86% of the mass in our solar system. It's so large that approximately 1.3 million Earths could fit inside of it.</p>
+            </div>
+            
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-pink-400 text-4xl mb-4">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Countless Stars</h3>
+                <p class="text-gray-300">There are more stars in the universe than grains of sand on all the Earth's beaches. The observable universe contains about 70 sextillion stars.</p>
+            </div>
+            
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-yellow-400 text-4xl mb-4">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Time Dilation</h3>
+                <p class="text-gray-300">Time moves slower near massive objects due to gravitational time dilation. GPS satellites have to account for this effect to maintain accuracy.</p>
+            </div>
+            
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-green-400 text-4xl mb-4">
+                    <i class="fas fa-temperature-high"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Extreme Temperatures</h3>
+                <p class="text-gray-300">Space is extremely cold (about -270°C) but can also be extremely hot near stars. The temperature varies dramatically depending on location.</p>
+            </div>
+            
+            <div class="fact-card p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-red-400 text-4xl mb-4">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">The Universe is Expanding</h3>
+                <p class="text-gray-300">The universe is expanding at an accelerating rate. Galaxies are moving away from each other, and this expansion is getting faster over time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Image -->
+    <div class="parallax h-64 md:h-96 w-full my-16" style="background-image: url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+
+    <!-- Planets Section -->
+    <section id="planets" class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">Planets & Moons</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Mercury -->
+            <div onclick="showPlanetInfo('Mercury', 'Mercury is the smallest planet in our solar system and closest to the Sun. A year on Mercury is just 88 days long!', 'bg-gray-400')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-gray-400 hover:bg-gray-300">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #a8a8a8, #6b6b6b);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Mercury</h3>
+            </div>
+            
+            <!-- Venus -->
+            <div onclick="showPlanetInfo('Venus', 'Venus is the hottest planet with surface temperatures hot enough to melt lead. It rotates in the opposite direction to most planets!', 'bg-yellow-100')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-yellow-100 hover:bg-yellow-50">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #f5d7a1, #d4a76a);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Venus</h3>
+            </div>
+            
+            <!-- Earth -->
+            <div onclick="showPlanetInfo('Earth', 'Earth is the only known planet to support life. It has a powerful magnetic field that protects us from solar radiation.', 'bg-blue-400')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-blue-400 hover:bg-blue-300">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #6bb5ff, #1a73e8);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Earth</h3>
+            </div>
+            
+            <!-- Mars -->
+            <div onclick="showPlanetInfo('Mars', 'Mars has the largest volcano in the solar system (Olympus Mons) and is home to the famous \"Face on Mars\" rock formation.', 'bg-red-400')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-red-400 hover:bg-red-300">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #ff8a65, #c75b39);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Mars</h3>
+            </div>
+            
+            <!-- Jupiter -->
+            <div onclick="showPlanetInfo('Jupiter', 'Jupiter is the largest planet with a storm (Great Red Spot) that has been raging for at least 400 years. It has 79 known moons!', 'bg-yellow-500')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-yellow-500 hover:bg-yellow-400">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #f6c54d, #d4a72a);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Jupiter</h3>
+            </div>
+            
+            <!-- Saturn -->
+            <div onclick="showPlanetInfo('Saturn', 'Saturn has the most spectacular ring system of any planet. The rings are made mostly of chunks of ice and rock.', 'bg-yellow-200')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-yellow-200 hover:bg-yellow-100">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #e4d5a1, #c4b582);">
+                    <div class="absolute w-32 h-4 rounded-full bg-gray-200 opacity-70 -mt-2" style="transform: rotate(20deg);"></div>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900">Saturn</h3>
+            </div>
+            
+            <!-- Uranus -->
+            <div onclick="showPlanetInfo('Uranus', 'Uranus rotates on its side, likely due to a collision with an Earth-sized object. It has 13 rings and 27 known moons.', 'bg-teal-300')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-teal-300 hover:bg-teal-200">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #81d8d0, #4dbbb0);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Uranus</h3>
+            </div>
+            
+            <!-- Neptune -->
+            <div onclick="showPlanetInfo('Neptune', 'Neptune has the strongest winds in the solar system, reaching speeds of 2,100 km/h. It was the first planet located through mathematical calculations.', 'bg-blue-500')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-blue-500 hover:bg-blue-400">
+                <div class="w-24 h-24 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #5e9cff, #3a75d4);"></div>
+                <h3 class="text-xl font-semibold text-gray-900">Neptune</h3>
+            </div>
+        </div>
+        
+        <!-- Moons Section -->
+        <h3 class="text-2xl font-bold mt-16 mb-8 text-center">Notable Moons</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Moon -->
+            <div onclick="showPlanetInfo('Earth\'s Moon', 'The Moon is Earth\'s only natural satellite. It stabilizes our planet\'s wobble and creates tides. The same side always faces Earth!', 'bg-gray-200')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-gray-200 hover:bg-gray-100">
+                <div class="w-20 h-20 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #e0e0e0, #a0a0a0);"></div>
+                <h3 class="text-lg font-semibold text-gray-900">Moon</h3>
+            </div>
+            
+            <!-- Europa -->
+            <div onclick="showPlanetInfo('Europa', 'Europa (Jupiter\'s moon) has a subsurface ocean that may contain twice as much water as Earth\'s oceans. It\'s a prime candidate for extraterrestrial life.', 'bg-blue-100')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-blue-100 hover:bg-blue-50">
+                <div class="w-20 h-20 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #c2e0ff, #8cb8e6);"></div>
+                <h3 class="text-lg font-semibold text-gray-900">Europa</h3>
+            </div>
+            
+            <!-- Titan -->
+            <div onclick="showPlanetInfo('Titan', 'Titan (Saturn\'s moon) is the only moon with a dense atmosphere and liquid lakes (of methane and ethane). It\'s larger than Mercury!', 'bg-orange-200')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-orange-200 hover:bg-orange-100">
+                <div class="w-20 h-20 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #ffd8b2, #e6b88a);"></div>
+                <h3 class="text-lg font-semibold text-gray-900">Titan</h3>
+            </div>
+            
+            <!-- Io -->
+            <div onclick="showPlanetInfo('Io', 'Io (Jupiter\'s moon) is the most volcanically active body in the solar system, with over 400 active volcanoes. Its surface is constantly changing.', 'bg-yellow-200')" class="planet-card cursor-pointer flex flex-col items-center p-6 rounded-full transition-all bg-yellow-200 hover:bg-yellow-100">
+                <div class="w-20 h-20 rounded-full shadow-inner mb-4" style="background: linear-gradient(to bottom, #ffe082, #e6c873);"></div>
+                <h3 class="text-lg font-semibold text-gray-900">Io</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stars Section -->
+    <section id="stars" class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">Stars & Constellations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div onclick="showStarInfo('Sun', 'Our Sun is a yellow dwarf star that formed about 4.6 billion years ago. It will become a red giant in about 5 billion years.', 'text-yellow-400')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-yellow-400">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">The Sun</h3>
+                <p class="text-gray-300">Our closest star and the center of our solar system. Click to learn more.</p>
+            </div>
+            
+            <div onclick="showStarInfo('Sirius', 'Sirius is the brightest star in Earth\'s night sky. It\'s actually a binary star system located about 8.6 light-years away.', 'text-blue-300')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-blue-300">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Sirius</h3>
+                <p class="text-gray-300">The brightest star in the night sky. Click to learn more.</p>
+            </div>
+            
+            <div onclick="showStarInfo('Betelgeuse', 'Betelgeuse is a red supergiant that could go supernova anytime in the next million years. When it does, it will be visible even during the day!', 'text-red-400')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-red-400">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Betelgeuse</h3>
+                <p class="text-gray-300">A massive red supergiant in Orion. Click to learn more.</p>
+            </div>
+            
+            <div onclick="showStarInfo('Polaris', 'Polaris, the North Star, has been used for navigation for centuries. It\'s almost directly above Earth\'s north pole.', 'text-white')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-white">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Polaris</h3>
+                <p class="text-gray-300">The current North Star. Click to learn more.</p>
+            </div>
+            
+            <div onclick="showStarInfo('Orion', 'The Orion constellation contains two of the brightest stars (Rigel and Betelgeuse) and the famous Orion Nebula where new stars are born.', 'text-purple-300')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-purple-300">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Orion</h3>
+                <p class="text-gray-300">One of the most recognizable constellations. Click to learn more.</p>
+            </div>
+            
+            <div onclick="showStarInfo('Ursa Major', 'Ursa Major (the Great Bear) contains the Big Dipper asterism. The two end stars of the Dipper\'s bowl point to Polaris.', 'text-green-300')" class="fact-card cursor-pointer p-6 rounded-xl border border-gray-700 shadow-lg">
+                <div class="text-4xl mb-4 text-green-300">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Ursa Major</h3>
+                <p class="text-gray-300">Home to the Big Dipper. Click to learn more.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nebulae Section -->
+    <section id="nebulae" class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">Cosmic Nebulae</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div onclick="showNebulaInfo('Orion Nebula', 'The Orion Nebula is one of the brightest nebulae visible to the naked eye. It\'s a stellar nursery where new stars are being formed.', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Orion Nebula" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Orion Nebula</h3>
+                    <p class="text-gray-300">A stellar nursery in the Orion constellation. Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showNebulaInfo('Crab Nebula', 'The Crab Nebula is the remnant of a supernova explosion observed in 1054 AD. At its center is a pulsar that spins 30 times per second!', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Crab Nebula" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Crab Nebula</h3>
+                    <p class="text-gray-300">A supernova remnant with a pulsar at its center. Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showNebulaInfo('Helix Nebula', 'The Helix Nebula is one of the closest planetary nebulae to Earth. It was formed when a Sun-like star shed its outer layers.', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Helix Nebula" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Helix Nebula</h3>
+                    <p class="text-gray-300">A planetary nebula often called the \"Eye of God\". Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showNebulaInfo('Pillars of Creation', 'The Pillars of Creation are part of the Eagle Nebula. These towering columns of gas and dust are actively forming new stars.', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Pillars of Creation" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Pillars of Creation</h3>
+                    <p class="text-gray-300">Iconic star-forming region in the Eagle Nebula. Click to learn more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galaxy Section -->
+    <section id="galaxies" class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">Galaxies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div onclick="showGalaxyInfo('Milky Way', 'Our Milky Way galaxy is a barred spiral galaxy about 100,000 light-years across. It contains 100-400 billion stars and at least that many planets!', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Milky Way" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Milky Way</h3>
+                    <p class="text-gray-300">Our home galaxy. Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showGalaxyInfo('Andromeda', 'The Andromeda Galaxy is our nearest spiral galaxy neighbor. It\'s on a collision course with the Milky Way in about 4.5 billion years!', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Andromeda" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Andromeda</h3>
+                    <p class="text-gray-300">Our closest galactic neighbor. Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showGalaxyInfo('Sombrero Galaxy', 'The Sombrero Galaxy gets its name from its resemblance to the Mexican hat. It has a bright nucleus and an unusually large central bulge.', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Sombrero Galaxy" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Sombrero Galaxy</h3>
+                    <p class="text-gray-300">A galaxy that looks like a wide-brimmed hat. Click to learn more.</p>
+                </div>
+            </div>
+            
+            <div onclick="showGalaxyInfo('Whirlpool Galaxy', 'The Whirlpool Galaxy is a classic spiral galaxy interacting with a smaller companion galaxy. This interaction triggers star formation.', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80')" class="fact-card cursor-pointer rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="Whirlpool Galaxy" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Whirlpool Galaxy</h3>
+                    <p class="text-gray-300">A beautiful interacting spiral galaxy. Click to learn more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                        Space Explorer
+                    </h2>
+                    <p class="text-gray-400 mt-2">Discover the wonders of the universe</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-gray-400">&copy; 2023 Space Explorer. All rights reserved.</p>
+                </div>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="info-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 opacity-0 pointer-events-none modal">
+        <div class="bg-gray-800 rounded-xl max-w-md w-full mx-4 p-6 relative border border-gray-700">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+            <p id="modal-content" class="text-gray-300 mb-4"></p>
+            <button onclick="closeModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all">
+                Close
+            </button>
+        </div>
+    </div>
+</html>
